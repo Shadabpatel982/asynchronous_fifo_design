@@ -60,9 +60,12 @@ async-fifo/
 │   └── wptr_full_tb.v               ← write pointer + full flag testbench
 │
 └── sim/
-    └── waveform_results.png         ← simulation output screenshots
-```
+    ├── case_1_result.png         ← screenshot of case 1 testbench
+    ├── case_2_result.png         ← screenshot of case 2 testbench
+    ├── write_side_result.png     ← matched result of expected write side waveform
+    ├── read_side_result.png      ← matched result of expected read side waveform
 
+```
 ---
 
 ## Key Concepts Implemented
