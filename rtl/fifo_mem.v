@@ -28,10 +28,10 @@ input wire wclken,
 input wire [3:0] raddr,
 output wire [7:0] rdata
 );
-reg [7:0] mem[15:0] ;
+reg [7:0] mem[15:0] ; // 16 x 8 FIFO buffer width = 8 depth = 16
 always@(posedge wclk)
-if (wclken) 
+if (wclken)        // when wclken is high whatever at wdata line is written to waddr at posedge clk
 mem[waddr] <= wdata;
-assign rdata = mem [raddr];
+assign rdata = mem [raddr]; // when read domain request whatever at raddr comes out
 
 endmodule
