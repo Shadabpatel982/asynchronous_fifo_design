@@ -33,6 +33,7 @@ output wire wfull,
 output wire rempty
 );
 
+// internal signals declarations 
 wire[4:0] wptr;
 wire[4:0] rptr;
 wire[4:0] wptr_synch;
@@ -41,6 +42,7 @@ wire wclken;
 wire[3:0] waddr;
 wire[3:0] raddr;
 
+// instantiating wptr_full module
 wptr_full wptr_inst (
 .wclk(wclk),
 .w_rst(w_rst),
@@ -52,6 +54,7 @@ wptr_full wptr_inst (
 .waddr(waddr)
 );
 
+// instantiating rptr_empty module
 rptr_empty rptr_inst (
 .rclk(rclk),
 .r_rst(r_rst),
@@ -62,6 +65,7 @@ rptr_empty rptr_inst (
 .rempty(rempty)
 );
 
+// instantiating 2_ff_synch module to transfer wptr to read clk domain
 ff_synch wptr_synch_ins (
 .clk(rclk),
 .rst(r_rst),
@@ -69,6 +73,7 @@ ff_synch wptr_synch_ins (
 .ptr_out(wptr_synch)
 );
 
+// instantiating 2_ff_synch module to transfer rptr to write clk domain
 ff_synch rptr_synch_ins (
 .clk(wclk),
 .rst(w_rst),
@@ -76,6 +81,7 @@ ff_synch rptr_synch_ins (
 .ptr_out(rptr_synch)
 );
 
+// instantiating fifo_mem module
 fifo mem_inst (
 .wclk(wclk),
 .waddr(waddr),
