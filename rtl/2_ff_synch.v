@@ -23,11 +23,11 @@
 module ff_synch(
 input wire clk,
 input wire rst,
-input wire[4:0] ptr_in,
+input wire[4:0] ptr_in, 
 output reg[4:0] ptr_out
 );
 
-reg[4:0] synch;
+reg[4:0] synch; // output of first FF
 
 always @(posedge clk or negedge rst)
 if(!rst)
